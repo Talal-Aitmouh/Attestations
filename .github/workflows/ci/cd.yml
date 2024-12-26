@@ -1,0 +1,45 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main  # كيشتغل فكل مرة كاين push على الفرع 'main'
+  pull_request:
+    branches:
+      - main  # كيشتغل فكل مرة كاين pull request على الفرع 'main'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest  # كيستعمل آخر إصدار من Ubuntu باش يدير البناء
+    
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2  # باش يشد الكود من المستودع ديالك
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'  # غادي تستعمل إصدار Node.js 16
+
+      - name: Install dependencies
+        run: npm install  # باش تنصّب التبعيات ديال المشروع
+
+      - name: Run tests
+        run: npm test  # باش تشغل الاختبارات (تأكد أنه عندك سكربت ديال الاختبار فـ package.json)
+        
+      - name: Build
+        run: npm run build  # باش تشغل سكربت البناء إذا كان عندك
+
+  deploy:
+    runs-on: ubuntu-latest  # كيستعمل آخر إصدار من Ubuntu للنشر
+
+    needs: build  # هاد المهمة غادي تشتغل غير من بعد ما تكمل مهمة البناء بنجاح
+    
+    steps:
+      - name: Check out the code
+        uses: actions/checkout@v2
+        
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production..."
+          # هنا تقدر تزيد أي خطوات خاصة بالنشر ديالك، مثل استخدام AWS CLI أو Azure CLI أو غيرها
