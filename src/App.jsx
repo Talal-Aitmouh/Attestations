@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { PDFViewer } from '@react-pdf/renderer';
 import SalaryCertificate from './AttestationTravail';
 import AttestationTravail from './AttestationTravail';
+import Test from './Test';
 
 const App = () => {
   const data={
@@ -27,7 +28,7 @@ const App = () => {
       <div style={{ width: '600px', height: '800px' }}>
         <h1>Preview Attestation de Travail</h1>
         <PDFViewer style={{ width: '100%', height: '100%' }}>
-          <AttestationTravail employeeData={data} footerData={ComplexeData} />
+          <Test employeeData={data} footerData={ComplexeData} />
         </PDFViewer>
     </div>
   );

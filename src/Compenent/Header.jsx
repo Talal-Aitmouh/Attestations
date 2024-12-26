@@ -16,8 +16,8 @@ const styles = StyleSheet.create({
 
 const Header = () => (
     <View style={styles.header}>
-        <Image src="./logo.jpg" style={{height:120,width:120}} />
-        <Image src="./logoText.JPG" style={{height:90,width:300}} />
+        <Image src="./logo.jpg" style={{marginTop:10, marginBottom:10,height:100,width:100,opacity:0.5}} />
+        <Image src="./logoText.JPG" style={{marginTop:10, marginBottom:10,height:90,width:300,opacity:0.5}} />
     </View>
     
     

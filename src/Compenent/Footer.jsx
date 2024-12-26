@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
     bottom: 20,
     left: 15,
     right: 15,
+    opacity: 0.5,
   },
 });
 const Footer = ({ Data }) => (
